@@ -1,26 +1,31 @@
-import React, {useState} from 'react';
-import { View, StyleSheet, Text, Button, Alert, TouchableHighlight, Dimensions, Image, TextInput } from 'react-native';
+import React from 'react';
+import { View, Text, } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomePage from './pages/home/home-page';
+import ContactPage from './pages/contact/contact-page';
+import AboutPage from './pages/about/about-page';
 
-import CardComponent from './components/CardComponent';
+// import CardComponent from './components/CardComponent';
 
-const Yellow = () => {
-  Alert.alert("Yellow")
-}
-const Brown = () => {
-  Alert.alert("Brown")
-}
-const Blue = () => {
-  Alert.alert("Blue")
-}
-const Red = () => {
-  Alert.alert("Red")
-}
-const Purple = () => {
-  Alert.alert("Purpple")
-}
-const Pink = () => {
-  Alert.alert("Pink")
-}
+// const Yellow = () => {
+//   Alert.alert("Yellow")
+// }
+// const Brown = () => {
+//   Alert.alert("Brown")
+// }
+// const Blue = () => {
+//   Alert.alert("Blue")
+// }
+// const Red = () => {
+//   Alert.alert("Red")
+// }
+// const Purple = () => {
+//   Alert.alert("Purpple")
+// }
+// const Pink = () => {
+//   Alert.alert("Pink")
+// }
 
 // // const App = () => {
 // //   return (
@@ -63,47 +68,47 @@ const Pink = () => {
 
 
 
-const App = () => {
-  const [name, setName] = useState('');
-  const [identification, setIdentification] = useState('');
-  const [city, setCity] = useState('');
-  const [telephone, setTelephone] = useState('');
-  const validateUserFields = () =>{
-    if (name == "") {
-      Alert.alert("Debe ingresar el nombre");
-    }
-    else if (identification == "" || isNan(identification) || identification.length < 5) {
-      Alert.alert("Debe ingresar el documento, debe ser númerio y debe contener más de 5 carácteres");
-    }
-    else if (city == "") {
-      Alert.alert("Debe ingresar la ciudad");
-    }
-    else if (telephone == "") {
-      Alert.alert("Debe ingresar el teléfono");
-    }
-  }
-  return (
-    <View style={styles.container}>
-      <CardComponent></CardComponent>
-      <Text>{name}</Text>
-      <TextInput style={styles.inputName} placeholder="Enter Name" onChangeText={text =>setName(text)}></TextInput>
-      <TextInput style={styles.inputIdentification} placeholder="Enter Identification" onChangeText={text =>setIdentification(text)}></TextInput>
-      <TextInput style={styles.inputCity} placeholder="Enter City" onChangeText={text =>setCity(text)}></TextInput>
-      <TextInput style={styles.inputTelephone} placeholder="Enter Telephone" onChangeText={text =>setTelephone(text)}></TextInput>
-    <TouchableHighlight style={styles.signUpButton} onPress={validateUserFields}>
-    <Text style={styles.signUpTextButton}>Sign Up</Text>
-    </TouchableHighlight>
-    </View>
-  )
-}
+// const App = () => {
+//   const [name, setName] = useState('');
+//   const [identification, setIdentification] = useState('');
+//   const [city, setCity] = useState('');
+//   const [telephone, setTelephone] = useState('');
+//   const validateUserFields = () =>{
+//     if (name == "") {
+//       Alert.alert("Debe ingresar el nombre");
+//     }
+//     else if (identification == "" || isNan(identification) || identification.length < 5) {
+//       Alert.alert("Debe ingresar el documento, debe ser númerio y debe contener más de 5 carácteres");
+//     }
+//     else if (city == "") {
+//       Alert.alert("Debe ingresar la ciudad");
+//     }
+//     else if (telephone == "") {
+//       Alert.alert("Debe ingresar el teléfono");
+//     }
+//   }
+//   return (
+//     <View style={styles.container}>
+//       <CardComponent></CardComponent>
+//       <Text>{name}</Text>
+//       <TextInput style={styles.inputName} placeholder="Enter Name" onChangeText={text =>setName(text)}></TextInput>
+//       <TextInput style={styles.inputIdentification} placeholder="Enter Identification" onChangeText={text =>setIdentification(text)}></TextInput>
+//       <TextInput style={styles.inputCity} placeholder="Enter City" onChangeText={text =>setCity(text)}></TextInput>
+//       <TextInput style={styles.inputTelephone} placeholder="Enter Telephone" onChangeText={text =>setTelephone(text)}></TextInput>
+//     <TouchableHighlight style={styles.signUpButton} onPress={validateUserFields}>
+//     <Text style={styles.signUpTextButton}>Sign Up</Text>
+//     </TouchableHighlight>
+//     </View>
+//   )
+// }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center"
-  },
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     flexDirection: "column",
+//     alignItems: "center",
+//     justifyContent: "center"
+//   },
   // box1: {
   //   flex: 1,
   //   flexDirection: "row"
@@ -194,58 +199,73 @@ const styles = StyleSheet.create({
   //   top: Dimensions.get("screen").height * 0.4,
   //   borderRadius: 15
   // },
-  inputName: {
-    borderColor: "black",
-    borderWidth: 1,
-    borderRadius: 5,
-    width: Dimensions.get("screen").width * 0.9,
-    // paddingLeft: Dimensions.get("screen").width * 0.35,
-    // paddingRight: Dimensions.get("screen").width * 0.35,
-    paddingTop: 5,
-    paddingBottom: 5,
-    paddingLeft: 5
-  },
-  inputIdentification: {
-    borderColor: "black",
-    borderWidth: 1,
-    borderRadius: 5,
-    width: Dimensions.get("screen").width * 0.9,
-    paddingTop: 5,
-    paddingBottom: 5,
-    marginTop: 10,
-    paddingLeft: 5
-  },
-  inputCity: {
-    borderColor: "black",
-    borderWidth: 1,
-    borderRadius: 5,
-    width: Dimensions.get("screen").width * 0.9,
-    paddingTop: 5,
-    paddingBottom: 5,
-    marginTop: 10,
-    paddingLeft: 5
-  },
-  inputTelephone: {
-    borderColor: "black",
-    borderWidth: 1,
-    borderRadius: 5,
-    width: Dimensions.get("screen").width * 0.9,
-    paddingTop: 5,
-    paddingBottom: 5,
-    marginTop: 10,
-    paddingLeft: 5
-  },
-  signUpButton:{
-    marginTop: 10,
-    backgroundColor: "#607d8b",
-    padding: 10,
-    borderRadius: 5,
-    width: Dimensions.get("screen").width * 0.2,
-    alignItems: "center"
-  },
-  signUpTextButton:{
-    color: "white"
-  }
-});
+//   inputName: {
+//     borderColor: "black",
+//     borderWidth: 1,
+//     borderRadius: 5,
+//     width: Dimensions.get("screen").width * 0.9,
+//     // paddingLeft: Dimensions.get("screen").width * 0.35,
+//     // paddingRight: Dimensions.get("screen").width * 0.35,
+//     paddingTop: 5,
+//     paddingBottom: 5,
+//     paddingLeft: 5
+//   },
+//   inputIdentification: {
+//     borderColor: "black",
+//     borderWidth: 1,
+//     borderRadius: 5,
+//     width: Dimensions.get("screen").width * 0.9,
+//     paddingTop: 5,
+//     paddingBottom: 5,
+//     marginTop: 10,
+//     paddingLeft: 5
+//   },
+//   inputCity: {
+//     borderColor: "black",
+//     borderWidth: 1,
+//     borderRadius: 5,
+//     width: Dimensions.get("screen").width * 0.9,
+//     paddingTop: 5,
+//     paddingBottom: 5,
+//     marginTop: 10,
+//     paddingLeft: 5
+//   },
+//   inputTelephone: {
+//     borderColor: "black",
+//     borderWidth: 1,
+//     borderRadius: 5,
+//     width: Dimensions.get("screen").width * 0.9,
+//     paddingTop: 5,
+//     paddingBottom: 5,
+//     marginTop: 10,
+//     paddingLeft: 5
+//   },
+//   signUpButton:{
+//     marginTop: 10,
+//     backgroundColor: "#607d8b",
+//     padding: 10,
+//     borderRadius: 5,
+//     width: Dimensions.get("screen").width * 0.2,
+//     alignItems: "center"
+//   },
+//   signUpTextButton:{
+//     color: "white"
+//   }
+// });
 
-export default App;
+const Stack = createStackNavigator();
+
+function App(){
+  return(
+    <NavigationContainer>
+      <Stack.Navigator>
+      <Stack.Screen name="Home" component={HomePage}/>
+      <Stack.Screen name="Contact" component={ContactPage}/>
+      <Stack.Screen name="About" component={AboutPage}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App
+
